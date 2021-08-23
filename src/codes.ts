@@ -18,4 +18,8 @@ export const ActionCodes = {
     RestartDraw : "Restart",
     NewDrawer : "New Drawer",
     GameStarted : "Game Started",
+    YouPick: "Players Turn",
+    YouDraw : "You Draw",
+    SomeoneElsePick : "Someones Picking",
+    SomeoneElseDraw : "Someone Else Drawing",
 }

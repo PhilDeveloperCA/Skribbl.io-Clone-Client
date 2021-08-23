@@ -1,7 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { isConstructorDeclaration } from 'typescript';
-import {w3cwebsocket} from 'websocket';
-import {client} from './client';
+import {client} from '../src/client';
 //const Websocket = require('websocket').client;
 
 type Coordinate = {
@@ -32,6 +30,7 @@ export const App:React.FC = () => {
     const paths = useRef<DetailedDrawing>([]);
     const [color, setColor] = useState<string>('black');
     const [size, setSize] = useState<number>(5);
+    const [playerDrawing, setPlayerDrawing] = useState<string>("");
     const lastEvent = useRef<Coordinate|null>(null);
 
     useEffect(() => {
@@ -41,11 +40,7 @@ export const App:React.FC = () => {
         }
 
         client.onmessage = (message) => {
-            //console.log(message.data);
-            //@ts-ignore
-            console.log(JSON.parse(message.data));
-            // @ts-ignore
-            const data = JSON.parse(message.data);
+            const data = JSON.parse(message.data.toString());
             if(data.method === "undo"){
                 if(paths.current.length > 0){
                     paths.current = paths.current.slice(0,paths.current.length-1);
@@ -73,14 +68,7 @@ export const App:React.FC = () => {
             console.log(paths.current);
         }
 
-        //return () => {client.close()};
-
     }, [])
-    //let ws = new Websocket("ws://192.168.1.122:9090");
-
-    /*ws.onopen = (ws:any) => {
-        console.log("Connection");
-    }*/
 
     const setColorOption= (e:any,color:string) => {
         e.preventDefault();

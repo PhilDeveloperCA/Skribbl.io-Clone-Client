@@ -37,11 +37,11 @@ const Lobby:FC = () => {
         }
         switch(data.status){
             case ActionCodes.PlayerJoined: {
-                setPlayers([...players, data.payload.player]);
+                setPlayers([...players, data.player.name]);
                 break;
             }
             case ActionCodes.PlayerLeft: {
-                const newPlayers = players.filter((v) => v !== data.payload.player);
+                const newPlayers = players.filter((v) => v !== data.player.name);
                 setPlayers(newPlayers);
                 break;
             }
