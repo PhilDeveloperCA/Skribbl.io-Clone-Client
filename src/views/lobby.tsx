@@ -2,6 +2,12 @@ import React, {FC, useState, useRef, useEffect, Fragment} from "react";
 import { useHistory, useParams } from "react-router";
 import {apiClient, client} from '../client';
 import {ErrorCodes, ActionCodes} from '../codes';
+import {TextField, Card, Container, makeStyles, Grid, Button, Typography, Select, MenuItem, FormControl, InputLabel} from '@material-ui/core'; 
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+
+const styles = makeStyles((theme) => {
+    
+})
 
 type gameSettings = {
     seconds: number, 
@@ -54,12 +60,19 @@ const Lobby:FC = () => {
         }
     }
 
+    const playerTable = players.map((player) => {
+        <div key={player}>
+            <Typography variant="h4"> {player} </Typography>
+        </div>
+    })
+
     return(
         <Fragment>
             {(name === gameSettings.admin && players.length>2)? <button> Play </button>:null}
             {players.map((player,index) => <li> {player} </li>)}
             rounds:{gameSettings.rounds}
             seconds Per Round : {gameSettings.seconds}
+            <Button variant="contained" color="primary" disabled={name !== gameSettings.admin || players.length<3}> Play: </Button>
         </Fragment>
     )
 }
