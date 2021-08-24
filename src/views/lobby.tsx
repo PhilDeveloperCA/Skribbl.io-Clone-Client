@@ -48,6 +48,7 @@ const Lobby:FC = () => {
             }
             case ActionCodes.PlayerLeft: {
                 const newPlayers = players.filter((v) => v !== data.player.name);
+                setSettings({...gameSettings, admin:data.admin});
                 setPlayers(newPlayers);
                 break;
             }
