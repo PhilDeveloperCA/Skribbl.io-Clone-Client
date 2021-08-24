@@ -86,7 +86,8 @@ const Create:FC = () => {
 
     const Submit = (e:any) => {
         e.preventDefault();
-        if(CreateSubmission.name||"" === ""){
+        console.log(CreateSubmission);
+        if(CreateSubmission.name === ""){
             return setNameError("Enter Valid Name");
         }
         client.send(JSON.stringify({type:"create", payload:CreateSubmission}))
