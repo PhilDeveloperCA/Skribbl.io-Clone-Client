@@ -30,6 +30,8 @@ const Lobby:FC = () => {
             setPlayers(res.data.players);
             setSettings(res.data.game);
         })
+
+        return client.send(JSON.stringify({type:"leave"}));
     },[])
 
     client.onmessage = (message) => {
