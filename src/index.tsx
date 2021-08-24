@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import {App as Canvas} from './app';
+import {App as Canvas} from './views/game';
 import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom';
 import Lobby from './views/lobby';
 import Home from './views/home';
