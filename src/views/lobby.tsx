@@ -68,6 +68,10 @@ const Lobby:FC = () => {
 
     return(
         <Fragment>
+            <Grid>
+                <Grid item> </Grid> {/* Put Players In The Game */}
+                <Grid item> </Grid> {/* Put Players In The Game */}
+            </Grid>
             {(name === gameSettings.admin && players.length>2)? <button> Play </button>:null}
             {players.map((player,index) => <li> {player} </li>)}
             rounds:{gameSettings.rounds}
